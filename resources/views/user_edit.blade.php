@@ -72,7 +72,7 @@
                 id="password"
                 name="password"
                 aria-describedby="emailHelp"
-                value='{{$user->password}}'
+                value='{{Crypt::decrypt($user->password)}}'
             >
         </div>
         <button type="submit" class="btn btn-primary">Editar</button>

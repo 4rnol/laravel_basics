@@ -44,6 +44,7 @@ class HomeController extends Controller
         $user->email = $request->email;
         $user->phone_number = $request->phone_number;
         $user->user_role = $request->user_role;
+        $user->password =Crypt::encrypt($request->password);
         $user->save();
 
         $users = User::all();
