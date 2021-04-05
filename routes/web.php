@@ -16,12 +16,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
-Route::get('/menu', function () {
-    return view('layouts/navbar');
-});
+})->name("welcome");
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
-Route::get('/layout', 'HomeController@layout');
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/table/users','HomeController@tables')->name('table.user');
+
+Route::get('/user/{user}/edit','HomeController@userEdit')->name('user.edit');
+
+Route::put('user/{user}','HomeController@userUpdate')->name('user.update');
+
+Route::delete('users/{user}/delete', 'HomeController@userDestroy')->name('user.delete');
