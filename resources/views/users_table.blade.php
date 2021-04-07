@@ -1,3 +1,4 @@
+
 @extends('layouts.navbar')
 
 @section('title', 'users-table')
@@ -15,7 +16,7 @@
                 colspan="1"
                 aria-sort="ascending"
                 aria-label="Rendering engine: activate to sort column descending"
-                style="width: 205.8px;"
+                style="width: 105.8px;"
             >Username</th>
             <th
                 class="sorting"
@@ -24,7 +25,7 @@
                 rowspan="1"
                 colspan="1"
                 aria-label="Browser: activate to sort column ascending"
-                style="width: 257px;"
+                style="width: 127px;"
             >Lastname</th>
             <th
                 class="sorting"
@@ -42,7 +43,7 @@
                 rowspan="1"
                 colspan="1"
                 aria-label="Engine version: activate to sort column ascending"
-                style="width: 180.2px;"
+                style="width: 120.2px;"
             >Phone_number</th>
             <th
                 class="sorting"
@@ -59,7 +60,7 @@
                 rowspan="1"
                 colspan="1"
                 aria-label="CSS grade: activate to sort column ascending"
-                style="width: 134px;"
+                style="width: 234px;"
             >Edit</th></tr>
         </thead>
         <tbody>
