@@ -25,9 +25,9 @@
                                  </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{Illuminate\Support\Facades\Auth::user()->first_name}}</strong>
-                                 </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span> </a>
+                                 </span> <span class="text-muted text-xs block">{{Illuminate\Support\Facades\Auth::user()->user_role}} <b class="caret"></b></span> </span> </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                            <li><a href="profile.html">Account</a></li>
+                            <li><a href="#">Account</a></li>
 
                         </ul>
                     </div>
@@ -37,10 +37,16 @@
                 </li>
 
                 <li class="">
-                    <a href="{{ route('home') }}"><i class="fa fa-star"></i> <span class="nav-label">Home</span> </a>
+                    <a href="{{ route('home') }}"><i class="fa fa-star"></i> <span class="nav-label">{{__('Home')}}</span> </a>
                 </li>
                 <li class="">
-                    <a href="{{ route('table.user') }}"><i class="fa fa-table"></i> <span class="nav-label">Users Table</span></a>
+                    <a href="{{ route('table.user') }}"><i class="fa fa-table"></i> <span class="nav-label">{{__('Users Table')}}</span></a>
+                </li>
+                <li class="">
+                    <a href="{{ route('table.providers') }}"><i class="fa fa-table"></i> <span class="nav-label">{{__('Providers Table')}}</span></a>
+                </li>
+                <li class="">
+                    <a href="{{ route('table.spots') }}"><i class="fa fa-table"></i> <span class="nav-label">{{__('Spots Table')}}</span></a>
                 </li>
             </ul>
         </div>

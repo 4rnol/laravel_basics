@@ -67,9 +67,9 @@ class HomeController extends Controller
     public function userDestroy(User $user)
     {
         $user->delete();
-        $users = User::all();
 
-        return view('users_table',compact('users'));
+
+        return $this->tables();
     }
 
 }

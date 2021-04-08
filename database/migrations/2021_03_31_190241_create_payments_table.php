@@ -17,10 +17,10 @@ class CreatePaymentsTable extends Migration
             $table->id();
             $table->float('amount');
             $table->string('description');
-            $table->unsignedBigInteger('providers_id');
-            $table->foreign('providers_id')->references('id')->on('providers');
-            $table->BigInteger('spots_id')->unsigned();
-            $table->foreign('spots_id')->references('id')->on('spots')->onDelete('cascade');
+            $table->unsignedBigInteger('provider_id')->unsigned();
+            $table->foreign('provider_id')->references('id')->on('providers');
+            $table->BigInteger('spot_id')->unsigned();
+            $table->foreign('spot_id')->references('id')->on('spots');
             $table->timestamps();
         });
     }

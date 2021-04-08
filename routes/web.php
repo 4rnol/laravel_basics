@@ -42,12 +42,17 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('passw
 
 
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/table/users','HomeController@tables')->name('table.user');
-
-Route::get('/user/{user}/edit','HomeController@userEdit')->name('user.edit');
-
+Route::get('home', 'HomeController@index')->name('home');
+Route::get('table/users','HomeController@tables')->name('table.user');
+Route::get('user/{user}/edit','HomeController@userEdit')->name('user.edit');
 Route::put('user/{user}','HomeController@userUpdate')->name('user.update');
-
 Route::delete('users/{user}/delete', 'HomeController@userDestroy')->name('user.delete');
+
+Route::get('user/{user}/provider', 'ProviderController@userProviderTable')->name('user.provider');
+Route::get('provider/{provider}/users', 'ProviderController@providerUsersTable')->name('provider.users');
+Route::get('provider/{provider}/spots', 'ProviderController@providerSpotsTable')->name('provider.spots');
+Route::get('table/providers', 'ProviderController@show')->name('table.providers');
+Route::get('provider/create', 'ProviderController@create')->name('provider.create');
+
+Route::get('table/spot','SpotController@show')->name('table.spots');
+Route::get('spot/{spot}/providers','SpotController@spotProvidersTable')->name('spot.providers');

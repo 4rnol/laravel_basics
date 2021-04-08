@@ -1,10 +1,9 @@
-
 @extends('layouts.navbar')
 
-@section('title', 'users-table')
+@section('title', 'provider-spots')
 
 @section('content')
-    <h2>Users List</h2>
+    <h2>Provider Spots List</h2>
     <table class="table table-striped table-bordered table-hover dataTables-example dataTable" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info" role="grid">
         <thead>
         <tr role="row">
@@ -16,8 +15,8 @@
                 colspan="1"
                 aria-sort="ascending"
                 aria-label="Rendering engine: activate to sort column descending"
-                style="width: 105.8px;"
-            >Username</th>
+                style="width: 205.8px;"
+            >{{__('Spot name')}}</th>
             <th
                 class="sorting"
                 tabindex="0"
@@ -25,8 +24,8 @@
                 rowspan="1"
                 colspan="1"
                 aria-label="Browser: activate to sort column ascending"
-                style="width: 127px;"
-            >Lastname</th>
+                style="width: 227px;"
+            >{{__('Title')}}</th>
             <th
                 class="sorting"
                 tabindex="0"
@@ -35,7 +34,7 @@
                 colspan="1"
                 aria-label="Platform(s): activate to sort column ascending"
                 style="width: 236.2px;"
-            >Email</th>
+            >{{__('Subtitle')}}</th>
             <th
                 class="sorting"
                 tabindex="0"
@@ -44,7 +43,7 @@
                 colspan="1"
                 aria-label="Engine version: activate to sort column ascending"
                 style="width: 120.2px;"
-            >Phone_number</th>
+            >{{__('Description')}}</th>
             <th
                 class="sorting"
                 tabindex="0"
@@ -53,7 +52,7 @@
                 colspan="1"
                 aria-label="CSS grade: activate to sort column ascending"
                 style="width: 134px;"
-            >User_role</th><th
+            >{{__('Status')}}</th><th
                 class="sorting"
                 tabindex="0"
                 aria-controls="DataTables_Table_0"
@@ -64,23 +63,23 @@
             >Acciones</th></tr>
         </thead>
         <tbody>
-        @foreach($users as $user)
-        <tr class="gradeA odd" role="row">
-            <td class="sorting_1">{{$user->first_name}}</td>
-            <td>{{$user->last_name}}</td>
-            <td>{{$user->email}}</td>
-            <td class="center">{{$user->phone_number}}</td>
-            <td class="center">{{$user->user_role}}</td>
-            <td>
-                <a type="button" href="{{ route('user.edit',$user) }}" style="display: inline-block" class="btn btn-danger">editar</a>
-                <form method="POST" style="display: inline-block" action="{{ route('user.delete',$user) }}">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit"  class="btn btn-warning">Eliminar</button>
-                </form>
-                <a type="button" href="{{ route('user.provider',$user) }}" style="display: inline-block" class="btn btn-primary">Proveedores</a>
-            </td>
-        </tr></tbody>
+        @foreach($spots as $spot)
+            <tr class="gradeA odd" role="row">
+                <td class="sorting_1">{{$spot->name}}</td>
+                <td>{{$spot->title}}</td>
+                <td>{{$spot->subtitle}}</td>
+                <td class="center">{{$spot->description}}</td>
+                <td class="center">{{$spot->status}}</td>
+                <td>
+                    <a type="button" href="{{ route('user.edit',$spot) }}" style="display: inline-block" class="btn btn-danger">editar</a>
+                    <form method="POST" style="display: inline-block" action="{{ route('user.delete',$spot) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit"  class="btn btn-warning">Eliminar</button>
+                    </form>
+                    <a type="button" href="{{ route('spot.providers',$spot) }}" style="display: inline-block" class="btn btn-primary">Proveedores</a>
+                </td>
+            </tr></tbody>
         @endforeach
     </table>
 @endsection

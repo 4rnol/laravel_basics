@@ -15,4 +15,28 @@ class User extends Authenticatable
     protected $fillable = [
         'first_name','last_name','email','phone_number','password','fb_id','user_role'
     ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
+    public function providers()
+    {
+        return $this->hasMany('App\Models\Provider','users_id','id');
+    }
 }
