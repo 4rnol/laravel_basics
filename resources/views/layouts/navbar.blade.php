@@ -40,13 +40,16 @@
                     <a href="{{ route('home') }}"><i class="fa fa-star"></i> <span class="nav-label">{{__('Home')}}</span> </a>
                 </li>
                 <li class="">
-                    <a href="{{ route('table.user') }}"><i class="fa fa-table"></i> <span class="nav-label">{{__('Users Table')}}</span></a>
+                    <a href="{{ route('users.index') }}"><i class="fa fa-table"></i> <span class="nav-label">{{__('Users Table')}}</span></a>
                 </li>
                 <li class="">
-                    <a href="{{ route('table.providers') }}"><i class="fa fa-table"></i> <span class="nav-label">{{__('Providers Table')}}</span></a>
+                    <a href="{{ route('providers.index') }}"><i class="fa fa-table"></i> <span class="nav-label">{{__('Providers Table')}}</span></a>
                 </li>
                 <li class="">
-                    <a href="{{ route('table.spots') }}"><i class="fa fa-table"></i> <span class="nav-label">{{__('Spots Table')}}</span></a>
+                    <a href="{{ route('spots.index') }}"><i class="fa fa-table"></i> <span class="nav-label">{{__('Spots Table')}}</span></a>
+                </li>
+                <li class="">
+                    <a href="{{ route('payments.index') }}"><i class="fa fa-table"></i> <span class="nav-label">{{__('Payments Table')}}</span></a>
                 </li>
             </ul>
         </div>
@@ -82,6 +85,20 @@
         </div>
         @yield('content')
     </div>
+    @if(Illuminate\Support\Facades\Route::currentRouteName()=='users.index' )
+        <a href="{{ route('users.create') }}" type='button' style="bottom:10%;right:5%;position:fixed;z-index:9999;background-color: #060505;padding: 30px;color:#cdc8c8">Create User</a>
+    @endif
+
+    @if(Illuminate\Support\Facades\Route::currentRouteName()=='providers.index' )
+        <a href="{{route('providers.create')}}" type='button' style="bottom:10%;right:5%;position:fixed;z-index:9999;background-color: #060505;padding: 30px;color:#cdc8c8">Create Provider</a>
+    @endif
+
+    @if(Illuminate\Support\Facades\Route::currentRouteName()=='spots.index')
+        <a href="{{route('spots.create')}}" type='button' style="bottom:10%;right:5%;position:fixed;z-index:9999;background-color: #060505;padding: 30px;color:#cdc8c8">Create Spot</a>
+    @endif
+    @if(Illuminate\Support\Facades\Route::currentRouteName()=='payments.index')
+        <a href="{{route('payments.create')}}" type='button' style="bottom:10%;right:5%;position:fixed;z-index:9999;background-color: #060505;padding: 30px;color:#cdc8c8">Create payments</a>
+    @endif
 </div>
 
 

@@ -1,4 +1,3 @@
-
 @extends('layouts.navbar')
 
 @section('title', 'users-table')
@@ -65,22 +64,22 @@
         </thead>
         <tbody>
         @foreach($users as $user)
-        <tr class="gradeA odd" role="row">
-            <td class="sorting_1">{{$user->first_name}}</td>
-            <td>{{$user->last_name}}</td>
-            <td>{{$user->email}}</td>
-            <td class="center">{{$user->phone_number}}</td>
-            <td class="center">{{$user->user_role}}</td>
-            <td>
-                <a type="button" href="{{ route('user.edit',$user) }}" style="display: inline-block" class="btn btn-danger">editar</a>
-                <form method="POST" style="display: inline-block" action="{{ route('user.delete',$user) }}">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit"  class="btn btn-warning">Eliminar</button>
-                </form>
-                <a type="button" href="{{ route('user.provider',$user) }}" style="display: inline-block" class="btn btn-primary">Proveedores</a>
-            </td>
-        </tr></tbody>
+            <tr class="gradeA odd" role="row">
+                <td class="sorting_1">{{$user->first_name}}</td>
+                <td>{{$user->last_name}}</td>
+                <td>{{$user->email}}</td>
+                <td class="center">{{$user->phone_number}}</td>
+                <td class="center">{{$user->user_role}}</td>
+                <td>
+                    <a type="button" href="{{ route('users.edit',$user) }}" style="display: inline-block" class="btn btn-danger">editar</a>
+                    <form method="POST" style="display: inline-block" action="{{ route('users.destroy',$user) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit"  class="btn btn-warning">Eliminar</button>
+                    </form>
+                    <a type="button" href="{{ route('user.provider',$user) }}" style="display: inline-block" class="btn btn-primary">Proveedores</a>
+                </td>
+            </tr></tbody>
         @endforeach
     </table>
 @endsection

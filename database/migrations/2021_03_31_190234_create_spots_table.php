@@ -21,7 +21,7 @@ class CreateSpotsTable extends Migration
             $table->string('description');
             $table->string('status');
             $table->unsignedBigInteger('providers_id');
-            $table->foreign('providers_id')->references('id')->on('providers');
+            $table->foreign('providers_id')->references('id')->on('providers')->onDelete('cascade');;
             $table->timestamps();
         });
     }

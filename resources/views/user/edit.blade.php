@@ -17,7 +17,6 @@
                 class="form-control @error('first_name') is-invalid @enderror"
                 id="first_name"
                 name="first_name"
-
                 value='{{$user->first_name}}'
             >
             @error('first_name')
@@ -104,6 +103,6 @@
             </span>
             @enderror
         </div>
-        <button type="submit" class="btn btn-primary">Editar</button>
+        <button type="submit" class="btn btn-primary">Edit</button>
     </form>
 @endsection

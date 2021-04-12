@@ -71,13 +71,12 @@
                 <td class="center">{{$spot->description}}</td>
                 <td class="center">{{$spot->status}}</td>
                 <td>
-                    <a type="button" href="{{ route('user.edit',$spot) }}" style="display: inline-block" class="btn btn-danger">editar</a>
-                    <form method="POST" style="display: inline-block" action="{{ route('user.delete',$spot) }}">
+                    <a type="button" href="{{ route('spots.edit',$spot) }}" style="display: inline-block" class="btn btn-danger">editar</a>
+                    <form method="POST" style="display: inline-block" action="{{ route('spots.destroy',$spot) }}">
                         @csrf
                         @method('DELETE')
                         <button type="submit"  class="btn btn-warning">Eliminar</button>
                     </form>
-                    <a type="button" href="{{ route('spot.providers',$spot) }}" style="display: inline-block" class="btn btn-primary">Proveedores</a>
                 </td>
             </tr></tbody>
         @endforeach

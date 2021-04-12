@@ -11,7 +11,7 @@ class Provider extends Model
     protected $table = 'providers';
 
     protected $fillable = [
-        'dob','bussines_name','address','bussines_phone'.'website'
+        'dob','bussines_name','address','business_phone','website','users_id'
     ];
 
     public function spots()

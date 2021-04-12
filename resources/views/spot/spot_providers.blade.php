@@ -1,6 +1,6 @@
 @extends('layouts.navbar')
 
-@section('title', 'provider-create')
+@section('title', 'spot-providers')
 
 @section('content')
     <h2>Spot Providers List</h2>
@@ -16,7 +16,7 @@
                 aria-sort="ascending"
                 aria-label="Rendering engine: activate to sort column descending"
                 style="width: 205.8px;"
-            >{{__('Bussiness name')}}</th>
+            >{{__('Business name')}}</th>
             <th
                 class="sorting"
                 tabindex="0"
@@ -43,7 +43,7 @@
                 colspan="1"
                 aria-label="Engine version: activate to sort column ascending"
                 style="width: 120.2px;"
-            >{{__('Bussiness number')}}</th>
+            >{{__('Business number')}}</th>
             <th
                 class="sorting"
                 tabindex="0"
@@ -71,13 +71,12 @@
                 <td class="center">{{$provider->business_phone}}</td>
                 <td class="center">{{$provider->dob}}</td>
                 <td>
-                    <a type="button" href="{{ route('user.edit',$provider) }}" style="display: inline-block" class="btn btn-danger">editar</a>
-                    <form method="POST" style="display: inline-block" action="{{ route('user.delete',$provider) }}">
+                    <a type="button" href="{{ route('providers.edit',$provider) }}" style="display: inline-block" class="btn btn-danger">editar</a>
+                    <form method="POST" style="display: inline-block" action="{{ route('providers.destroy',$provider) }}">
                         @csrf
                         @method('DELETE')
                         <button type="submit"  class="btn btn-warning">Eliminar</button>
                     </form>
-                    <a type="button" href="{{ route('provider.spots',$provider) }}" style="display: inline-block" class="btn btn-primary">Spots</a>
                 </td>
             </tr></tbody>
         @endforeach

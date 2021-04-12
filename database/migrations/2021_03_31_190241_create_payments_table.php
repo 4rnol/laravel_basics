@@ -18,9 +18,9 @@ class CreatePaymentsTable extends Migration
             $table->float('amount');
             $table->string('description');
             $table->unsignedBigInteger('provider_id')->unsigned();
-            $table->foreign('provider_id')->references('id')->on('providers');
+            $table->foreign('provider_id')->references('id')->on('providers')->onDelete('cascade');;
             $table->BigInteger('spot_id')->unsigned();
-            $table->foreign('spot_id')->references('id')->on('spots');
+            $table->foreign('spot_id')->references('id')->on('spots')->onDelete('cascade');;
             $table->timestamps();
         });
     }

@@ -18,41 +18,21 @@ Route::get('/', function () {
     return view('welcome');
 })->name("welcome");
 
-//Auth::routes();
-
-    Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-    Route::post('login', 'Auth\LoginController@login');
-
-
-// Logout Routes...
-//if ($options['logout'] ?? true) {
-    Route::post('logout', 'Auth\LoginController@logout')->name('logout');
-//}
-
-// Registration Routes...
-//if ($options['register'] ?? true) {
-    Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-    Route::post('register', 'Auth\RegisterController@register');
-//}
-//forgot Password
-Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
-
-
+Auth::routes();
 
 Route::get('home', 'HomeController@index')->name('home');
-Route::get('table/users','HomeController@tables')->name('table.user');
-Route::get('user/{user}/edit','HomeController@userEdit')->name('user.edit');
-Route::put('user/{user}','HomeController@userUpdate')->name('user.update');
-Route::delete('users/{user}/delete', 'HomeController@userDestroy')->name('user.delete');
+
+Route::resource('users','UserController');
+
+Route::resource('providers', 'ProviderController');
+
+Route::resource('spots', 'SpotController');
+
+Route::resource('payments', 'PaymentController');
 
 Route::get('user/{user}/provider', 'ProviderController@userProviderTable')->name('user.provider');
 Route::get('provider/{provider}/users', 'ProviderController@providerUsersTable')->name('provider.users');
 Route::get('provider/{provider}/spots', 'ProviderController@providerSpotsTable')->name('provider.spots');
-Route::get('table/providers', 'ProviderController@show')->name('table.providers');
-Route::get('provider/create', 'ProviderController@create')->name('provider.create');
+Route::get('table/providers', 'ProviderControlle@show')->name('table.providers');
 
-Route::get('table/spot','SpotController@show')->name('table.spots');
 Route::get('spot/{spot}/providers','SpotController@spotProvidersTable')->name('spot.providers');

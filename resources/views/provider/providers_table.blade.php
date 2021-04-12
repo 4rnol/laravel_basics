@@ -71,8 +71,8 @@
                 <td class="center">{{$provider->business_phone}}</td>
                 <td class="center">{{$provider->dob}}</td>
                 <td>
-                    <a type="button" href="{{ route('user.edit',$provider) }}" style="display: inline-block" class="btn btn-danger">editar</a>
-                    <form method="POST" style="display: inline-block" action="{{ route('user.delete',$provider) }}">
+                    <a type="button" href="{{ route('providers.edit',$provider) }}" style="display: inline-block" class="btn btn-danger">editar</a>
+                    <form method="POST" style="display: inline-block" action="{{ route('providers.destroy',$provider) }}">
                         @csrf
                         @method('DELETE')
                         <button type="submit"  class="btn btn-warning">Eliminar</button>

@@ -11,7 +11,7 @@ class Spot extends Model
     protected $table = 'spots';
 
     protected $fillable = [
-        'name','title','subtitle','description','status'
+        'name','title','subtitle','description','status','providers_id'
     ];
 
     public function providers()

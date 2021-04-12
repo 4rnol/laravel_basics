@@ -1,9 +1,9 @@
 @extends('layouts.navbar')
 
-@section('title', 'user-providers')
+@section('title', 'payment-table')
 
 @section('content')
-    <h2>User Providers List</h2>
+    <h2>Payment List</h2>
     <table class="table table-striped table-bordered table-hover dataTables-example dataTable" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info" role="grid">
         <thead>
         <tr role="row">
@@ -16,7 +16,7 @@
                 aria-sort="ascending"
                 aria-label="Rendering engine: activate to sort column descending"
                 style="width: 205.8px;"
-            >{{__('Business name')}}</th>
+            >{{__('Amount')}}</th>
             <th
                 class="sorting"
                 tabindex="0"
@@ -25,7 +25,7 @@
                 colspan="1"
                 aria-label="Browser: activate to sort column ascending"
                 style="width: 227px;"
-            >{{__('address')}}</th>
+            >{{__('Description')}}</th>
             <th
                 class="sorting"
                 tabindex="0"
@@ -34,7 +34,7 @@
                 colspan="1"
                 aria-label="Platform(s): activate to sort column ascending"
                 style="width: 236.2px;"
-            >{{__('Website')}}</th>
+            >{{__('Provider')}}</th>
             <th
                 class="sorting"
                 tabindex="0"
@@ -43,7 +43,7 @@
                 colspan="1"
                 aria-label="Engine version: activate to sort column ascending"
                 style="width: 120.2px;"
-            >{{__('Bussiness number')}}</th>
+            >{{__('Spot')}}</th>
             <th
                 class="sorting"
                 tabindex="0"
@@ -51,28 +51,19 @@
                 rowspan="1"
                 colspan="1"
                 aria-label="CSS grade: activate to sort column ascending"
-                style="width: 134px;"
-            >{{__('Dob')}}</th><th
-                class="sorting"
-                tabindex="0"
-                aria-controls="DataTables_Table_0"
-                rowspan="1"
-                colspan="1"
-                aria-label="CSS grade: activate to sort column ascending"
                 style="width: 234px;"
-            >Acciones</th></tr>
+            >{{__('Actions')}}</th></tr>
         </thead>
         <tbody>
-        @foreach($providers as $provider)
+        @foreach($payments as $payment)
             <tr class="gradeA odd" role="row">
-                <td class="sorting_1">{{$provider->bussines_name}}</td>
-                <td>{{$provider->address}}</td>
-                <td>{{$provider->website}}</td>
-                <td class="center">{{$provider->business_phone}}</td>
-                <td class="center">{{$provider->dob}}</td>
+                <td class="sorting_1">{{$payment->amount}}</td>
+                <td>{{$payment->description}}</td>
+                <td>{{$payment->spot_id}}</td>
+                <td>{{$payment->provider_id}}</td>
                 <td>
-                    <a type="button" href="{{ route('users.edit',$provider) }}" style="display: inline-block" class="btn btn-danger">editar</a>
-                    <form method="POST" style="display: inline-block" action="{{ route('users.destroy',$provider) }}">
+                    <a type="button" href="{{ route('payments.edit',$payment) }}" style="display: inline-block" class="btn btn-danger">edit</a>
+                    <form method="POST" style="display: inline-block" action="{{ route('payments.destroy',$payment) }}">
                         @csrf
                         @method('DELETE')
                         <button type="submit"  class="btn btn-warning">Eliminar</button>

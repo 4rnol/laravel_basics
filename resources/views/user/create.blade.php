@@ -1,14 +1,13 @@
 @extends('layouts.navbar')
 
-@section('title', 'user-edit')
+@section('title', 'user-create')
 
 @section('content')
-    <h2>Editar Usuario</h2>
+    <h2>Create user</h2>
 
-    <form action="{{route('users.update',$user)}}" method="post">
+    <form action="{{route('users.store')}}" method="POST">
 
         @csrf
-        @method('put')
 
         <div class="mb-3">
             <label for="first_name" class="col-md-4 col-form-label text-md-right">{{ __('First Name') }}</label>
@@ -17,8 +16,7 @@
                 class="form-control @error('first_name') is-invalid @enderror"
                 id="first_name"
                 name="first_name"
-
-                value='{{$user->first_name}}'
+                value="{{ old('first_name') }}"
             >
             @error('first_name')
             <span class="invalid-feedback" role="alert">
@@ -34,7 +32,7 @@
                 id="last_name"
                 name="last_name"
                 aria-describedby="emailHelp"
-                value={{$user->last_name}}
+                value="{{ old('last_name') }}"
             >
             @error('last_name')
             <span class="invalid-feedback" role="alert">
@@ -50,7 +48,7 @@
                 id="email"
                 name="email"
                 aria-describedby="emailHelp"
-                value={{$user->email}}
+                value="{{ old('email') }}"
             >
             @error('email')
             <span class="invalid-feedback" role="alert">
@@ -66,7 +64,7 @@
                 id="phone_number"
                 name="phone_number"
                 aria-describedby="emailHelp"
-                value={{$user->phone_number}}
+                value="{{ old('phone_number') }}"
             >
             @error('phone_number')
             <span class="invalid-feedback" role="alert">
@@ -82,14 +80,32 @@
                 id="user_role"
                 name="user_role"
                 aria-describedby="emailHelp"
-                value={{$user->user_role}}
+                value="{{ old('user_role') }}"
             >
             @error('user_role')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
             @enderror
-        </div><div class="mb-3">
+        </div>
+        <div class="mb-3">
+            <label for="fb_id" class="col-md-4 col-form-label text-md-right">{{ __('Fb id') }}</label>
+            <input
+                type="text"
+                class="form-control @error('fb_id') is-invalid @enderror"
+                id="fb_id"
+                name="fb_id"
+                aria-describedby="emailHelp"
+                value="{{ old('fb_id') }}"
+            >
+            @error('fb_id')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
+
+        <div class="mb-3">
             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
             <input
                 type="text"
@@ -104,6 +120,6 @@
             </span>
             @enderror
         </div>
-        <button type="submit" class="btn btn-primary">Editar</button>
+        <button type="submit" class="btn btn-primary">Create</button>
     </form>
 @endsection
