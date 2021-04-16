@@ -2,6 +2,9 @@
 
 @section('title', 'spot-table')
 
+@section('username', $usr->first_name)
+@section('role', $usr->user_role)
+
 @section('content')
     <h2>Spot List</h2>
     <table class="table table-striped table-bordered table-hover dataTables-example dataTable" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info" role="grid">
@@ -77,7 +80,7 @@
                         @method('DELETE')
                         <button type="submit"  class="btn btn-warning">Eliminar</button>
                     </form>
-                    <a type="button" href="{{ route('spot.providers',$spot) }}" style="display: inline-block" class="btn btn-primary">Proveedores</a>
+                    <a type="button" href="{{ route('spots.providers.index',$spot) }}" style="display: inline-block" class="btn btn-primary">Proveedores</a>
                 </td>
             </tr></tbody>
         @endforeach

@@ -2,6 +2,9 @@
 
 @section('title', 'users-table')
 
+@section('username', $usr->first_name)
+@section('role', $usr->user_role)
+
 @section('content')
     <h2>Users List</h2>
     <table class="table table-striped table-bordered table-hover dataTables-example dataTable" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info" role="grid">
@@ -77,7 +80,7 @@
                         @method('DELETE')
                         <button type="submit"  class="btn btn-warning">Eliminar</button>
                     </form>
-                    <a type="button" href="{{ route('user.provider',$user) }}" style="display: inline-block" class="btn btn-primary">Proveedores</a>
+                    <a type="button" href="{{ route('users.providers.index',$user) }}" style="display: inline-block" class="btn btn-primary">Proveedores</a>
                 </td>
             </tr></tbody>
         @endforeach

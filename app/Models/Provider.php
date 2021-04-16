@@ -18,4 +18,8 @@ class Provider extends Model
     {
         return $this->belongsToMany('App\Models\Spot','payments','provider_id','spot_id');
     }
+    public function spotss()
+    {
+        return $this->hasMany('App\Models\Spot','providers_id','id');
+    }
 }

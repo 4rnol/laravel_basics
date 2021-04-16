@@ -1,6 +1,10 @@
 <?php
 
+use App\Models\User;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
+use \Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,6 +15,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserSeeder::class);
+            $this->call(UsersSeeder::class);
+            $this->call(ProvidersSeeder::class);
+            $this->call(SpotsSeeder::class);
+            $this->call(PaymentsSeeder::class);
     }
 }

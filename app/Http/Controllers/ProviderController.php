@@ -5,10 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\Provider;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class ProviderController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+    }
+    public function getUsr(){
+        return Auth::user();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +26,11 @@ class ProviderController extends Controller
      */
     public function index()
     {
+        $usr=$this->getUsr();
         $providers = Provider::all();
-        return view('provider/providers_table',compact('providers'));
+//        $providers = DB::table('providers')->paginate(15);
+//        return $providers->{'data'};
+        return view('provider/providers_table',compact('providers','usr'));
     }
 
     /**
@@ -27,8 +40,9 @@ class ProviderController extends Controller
      */
     public function create()
     {
+        $usr=$this->getUsr();
         $users=User::all();
-        return view('provider/create',compact('users'));
+        return view('provider/create',compact('users','usr'));
     }
 
     /**
@@ -73,8 +87,9 @@ class ProviderController extends Controller
      */
     public function edit(Provider $provider)
     {
+        $usr=$this->getUsr();
         $users=User::all();
-        return view('provider/edit',compact('provider','users'));
+        return view('provider/edit',compact('provider','users','usr'));
     }
 
     /**
@@ -118,18 +133,5 @@ class ProviderController extends Controller
     {
         $provider->delete();
         return back()->with('success','Provider deleted successfully.');
-    }
-
-
-    public function userProviderTable(User $user)
-    {
-        $providers = User::find($user->id)->providers;
-        return view('provider/user_provider_table',compact('providers'));
-    }
-
-    public function providerSpotsTable(Provider $provider)
-    {
-        $spots = Provider::find($provider->id)->spots;
-        return view('provider/provider_spots',compact('spots'));
     }
 }

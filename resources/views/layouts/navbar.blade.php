@@ -24,8 +24,8 @@
                                 <img alt="image" class="img-circle" src="{{asset('styles/img/profile_small.jpg')}}" />
                                  </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{Illuminate\Support\Facades\Auth::user()->first_name}}</strong>
-                                 </span> <span class="text-muted text-xs block">{{Illuminate\Support\Facades\Auth::user()->user_role}} <b class="caret"></b></span> </span> </a>
+                                <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">@yield('username')</strong>
+                                 </span> <span class="text-muted text-xs block">@yield('role') <b class="caret"></b></span> </span> </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                             <li><a href="#">Account</a></li>
 

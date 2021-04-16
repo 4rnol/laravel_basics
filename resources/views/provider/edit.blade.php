@@ -2,6 +2,9 @@
 
 @section('title', 'provider-edit')
 
+@section('username', $usr->first_name)
+@section('role', $usr->user_role)
+
 @section('content')
     <h2>Provider Edit</h2>
 

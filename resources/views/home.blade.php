@@ -2,6 +2,10 @@
 
 @section('title', 'home')
 
+@section('username', $usr->first_name)
+
+@section('role', $usr->user_role)
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

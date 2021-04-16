@@ -2,6 +2,9 @@
 
 @section('title', 'user-providers')
 
+@section('username', $usr->first_name)
+@section('role', $usr->user_role)
+
 @section('content')
     <h2>User Providers List</h2>
     <table class="table table-striped table-bordered table-hover dataTables-example dataTable" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info" role="grid">
@@ -71,8 +74,8 @@
                 <td class="center">{{$provider->business_phone}}</td>
                 <td class="center">{{$provider->dob}}</td>
                 <td>
-                    <a type="button" href="{{ route('users.edit',$provider) }}" style="display: inline-block" class="btn btn-danger">editar</a>
-                    <form method="POST" style="display: inline-block" action="{{ route('users.destroy',$provider) }}">
+                    <a type="button" href="{{ route('providers.edit',$provider) }}" style="display: inline-block" class="btn btn-danger">editar</a>
+                    <form method="POST" style="display: inline-block" action="{{ route('providers.destroy',$provider) }}">
                         @csrf
                         @method('DELETE')
                         <button type="submit"  class="btn btn-warning">Eliminar</button>

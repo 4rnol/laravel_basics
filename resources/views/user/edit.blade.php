@@ -2,6 +2,9 @@
 
 @section('title', 'user-edit')
 
+@section('username', $usr->first_name)
+@section('role', $usr->user_role)
+
 @section('content')
     <h2>Editar Usuario</h2>
 

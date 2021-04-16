@@ -6,12 +6,16 @@ use App\Models\Spot;
 use App\Models\User;
 use App\Models\Provider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SpotController extends Controller
 {
-    public function __constructor()
+    public function __construct()
     {
         $this->middleware('auth');
+    }
+    public function getUsr(){
+        return Auth::user();
     }
     /**
      * Display a listing of the resource.
@@ -20,8 +24,9 @@ class SpotController extends Controller
      */
     public function index()
     {
+        $usr=$this->getUsr();
         $spots = Spot::all();
-        return view('spot/spots_table',compact('spots'));
+        return view('spot/spots_table',compact('spots','usr'));
     }
 
     /**
@@ -31,8 +36,9 @@ class SpotController extends Controller
      */
     public function create()
     {
+        $usr=$this->getUsr();
         $providers=Provider::all();
-        return view('spot/create',compact('providers'));
+        return view('spot/create',compact('providers','usr'));
     }
 
     /**
@@ -77,8 +83,9 @@ class SpotController extends Controller
      */
     public function edit(Spot $spot)
     {
+        $usr=$this->getUsr();
         $providers=Provider::all();
-        return view('spot/edit',compact('spot','providers'));
+        return view('spot/edit',compact('spot','providers','usr'));
     }
 
     /**
@@ -122,15 +129,5 @@ class SpotController extends Controller
         $spot->delete();
         return back()->with('success','Spot deleted successfully.');
     }
-    public function spotProvidersTable(Spot $spot)
-    {
-        $spots = Spot::with('providers')->get();
-        $providers=[];
-        foreach ($spots as $spt){
-            if($spt->id==$spot->id) {
-                $providers=$spt->providers;
-            }
-        }
-        return view('spot/spot_providers',compact('providers'));
-    }
+
 }

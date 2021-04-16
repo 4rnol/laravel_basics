@@ -23,16 +23,13 @@ Auth::routes();
 Route::get('home', 'HomeController@index')->name('home');
 
 Route::resource('users','UserController');
+Route::resource('users.providers','UserProviderController');
 
 Route::resource('providers', 'ProviderController');
+Route::resource('providers.spots', 'ProviderSpotController');
 
 Route::resource('spots', 'SpotController');
+Route::resource('spots.providers', 'SpotProviderController');
 
 Route::resource('payments', 'PaymentController');
 
-Route::get('user/{user}/provider', 'ProviderController@userProviderTable')->name('user.provider');
-Route::get('provider/{provider}/users', 'ProviderController@providerUsersTable')->name('provider.users');
-Route::get('provider/{provider}/spots', 'ProviderController@providerSpotsTable')->name('provider.spots');
-Route::get('table/providers', 'ProviderControlle@show')->name('table.providers');
-
-Route::get('spot/{spot}/providers','SpotController@spotProvidersTable')->name('spot.providers');

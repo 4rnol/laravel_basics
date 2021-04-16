@@ -2,6 +2,9 @@
 
 @section('title', 'spot-edit')
 
+@section('username', $usr->first_name)
+@section('role', $usr->user_role)
+
 @section('content')
     <h2>Edit spot</h2>
 

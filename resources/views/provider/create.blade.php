@@ -2,6 +2,9 @@
 
 @section('title', 'provider-create')
 
+@section('username', $usr->first_name)
+@section('role', $usr->user_role)
+
 @section('content')
     <h2>Provider create</h2>
 

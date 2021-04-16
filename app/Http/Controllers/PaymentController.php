@@ -6,9 +6,18 @@ use App\Models\Payment;
 use App\Models\Provider;
 use App\Models\Spot;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PaymentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+    }
+    public function getUsr(){
+        return Auth::user();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +25,9 @@ class PaymentController extends Controller
      */
     public function index()
     {
+        $usr=$this->getUsr();
         $payments=Payment::all();
-        return view('payment/index',compact('payments'));
+        return view('payment/index',compact('payments','usr'));
     }
 
     /**
@@ -27,9 +37,10 @@ class PaymentController extends Controller
      */
     public function create()
     {
+        $usr=$this->getUsr();
         $providers = Provider::all();
         $spots = Spot::all();
-        return view('payment/create',compact('providers','spots'));
+        return view('payment/create',compact('providers','spots','usr'));
     }
 
     /**
@@ -72,9 +83,10 @@ class PaymentController extends Controller
      */
     public function edit(Payment $payment)
     {
+        $usr=$this->getUsr();
         $providers = Provider::all();
         $spots = Spot::all();
-        return view('payment/edit',compact('payment','providers','spots'));
+        return view('payment/edit',compact('payment','providers','spots','usr'));
     }
 
     /**

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Provider;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -23,13 +24,16 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-
+    }
+    public function getUsr(){
+        return Auth::user();
     }
 
     public function index()
     {
+        $usr=$this->getUsr();
         $users = User::all();
-        return view('user/index',compact('users'));
+        return view('user/index',compact('users','usr'));
     }
 
     /**
@@ -92,7 +96,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('user/edit',compact('user'));
+        $usr=$this->getUsr();
+        return view('user/edit',compact('user','usr'));
 
     }
 

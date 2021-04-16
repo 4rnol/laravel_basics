@@ -2,6 +2,9 @@
 
 @section('title', 'payment-create')
 
+@section('username', $usr->first_name)
+@section('role', $usr->user_role)
+
 @section('content')
     <h2>Payment create</h2>
 
